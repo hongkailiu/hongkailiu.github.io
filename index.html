@@ -1,1 +1,181 @@
-it works
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title></title>
+	<link  type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<style>
+	html, body {
+		height: 100%;
+	}
+	#wrapper{
+		min-height: 100%;
+		position:relative;
+	}
+	#body{
+		padding-bottom: 30px;    /* height of footer */
+	}
+
+	footer{
+		height: 30px; 
+		width:100%;
+		position: absolute;
+		left: 0;
+		bottom: 0; 
+	}
+
+	.imgsocial {
+		padding: 3px;
+		border: 0;
+		width: 24px;
+		height: 24px;
+		vertical-align: middle;
+	}
+
+	.imagemail {
+		padding: 3px;
+		border: 0;
+	}
+
+	.navbar-nav > li > a {
+		padding-top: 3px!important;
+		padding-bottom: 3px!important;
+	}
+	.navbar {
+		min-height: 28px!important;
+		margin-bottom: 20px;
+	}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+
+		<div class="container">
+
+
+
+			<div class="page-header">
+				<h1 id="h1_homepage"></h1>
+			</div>
+
+
+
+			<div id="content">
+				<nav class="navbar navbar-default" role="navigation">
+
+					<div id="my-nav">
+						<ul class="nav navbar-nav">
+							<li class="active"><a id="a_home" href="#home" data-toggle="tab"></a></li>
+							<li><a id="a_contact" href="#contact" data-toggle="tab"></a></li>
+						</ul>
+
+					</div>
+
+					<div id="my-nav-right" style="margin-right: 20px;"/>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a id="a_lang" href="#" onclick="return false;"><img id="img_lang" src="" alt="" style="width: 18px;margin-right: 0px;padding:0px"/></a></li>
+						</ul>
+
+					</div>
+				</nav>
+			</div>
+
+			<div id="my-tab-content" class="tab-content">
+				<div class="tab-pane active" id="home">
+					<h2 id="h2_you_know"></h2>
+					<div id="d_place"></div>
+					<div id="d_jp"></div>
+					<div> <a href="file/resume.pdf" id="a_resume"></a>,  <a href="file/publication.pdf" id="a_pub"></a></div>
+					<div> <img class="imgsocial" alt="github-icon" src="i/github-icon.png" />
+							<button type="button" class="btn btn-link btn-xs" id="btn_github"></div>
+				</div>
+
+				<div class="tab-pane" id="contact">
+
+					<h2 id="h2_w_t_f_m"></h2>
+					
+					<ul class="list-unstyled">
+						<li><img class="imagemail" src="i/gmail.png" alt="gmail" /></li>
+						<li>
+							<img class="imgsocial" alt="qzone-icon" src="i/qzone-icon.png" />
+							<button type="button" class="btn btn-link btn-xs" id="btn_qzone"></button>
+						</li>
+
+						<li>
+							<img class="imgsocial" alt="weibo-icon" src="i/weibo-icon.png" />
+							<button type="button" class="btn btn-link btn-xs" id="btn_weibo"></button>
+						</li>
+
+						<li>
+							<img class="imgsocial" alt="wechat-icon" src="i/wechat-icon.png" />
+							<button type="button" class="btn btn-link btn-xs" id="btn_wechat"></button>
+						</li>
+					</ul>
+
+					<h2 id="h2_m"></h2>
+					
+					<ul class="list-unstyled">
+						
+						<li>
+							<img class="imgsocial" alt="linkedin-icon" src="i/linkedin-icon.png" />
+							<button type="button" class="btn btn-link btn-xs" id="btn_linkedin"></button>
+						</li>
+
+						<li>
+							<img class="imgsocial" alt="facebook-icon" src="i/facebook-icon.png" />
+							<button type="button" class="btn btn-link btn-xs" id="btn_facebook"></button>
+						</li>
+
+						<li>
+							<img class="imgsocial" alt="twitter-icon" src="i/twitter-icon.png" />
+							<button type="button" class="btn btn-link btn-xs" id="btn_twitter"></button>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+
+		</div> <!-- container -->
+	</div> <!-- wrapper -->
+
+	<footer>
+		<p class="text-center">
+		<span><small>Last modified: Mar. 23, 2015</small></span>
+		<span><img src="http://counter8.allfreecounter.com/private/freecounterstat.php?c=c1f30b8a3383ddaf9db9be2311bfde48" border="0" title="free hit counter" alt="free hit counter"></span>
+		<span><small>Hosted on <a href="#" id="a_000webhost">000webhost</a></small></span>
+		<!--
+		<span>Copyright &copy; 2015 Hongkai Liu</span>
+		
+		<span><a
+				href="http://validator.w3.org/check?uri=referer"><img
+				    src="http://www.w3.org/Icons/valid-xhtml11"
+					alt="Valid XHTML 1.1" height="31" width="88" /></a></span>&#160;<span><a
+				href="http://jigsaw.w3.org/css-validator/check/referer"><img
+					style="border: 0; width: 88px; height: 31px"
+					src="http://jigsaw.w3.org/css-validator/images/vcss"
+					alt="Valid CSS!" /></a></span>
+				-->
+		</p>
+		
+	</footer>
+
+
+	<script type="text/javascript" src="jquery/jquery.min.js"></script> 
+	<script type="text/javascript" src="jquery/jquery.i18n.properties.js"></script> 
+	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script> 
+	<script type="text/javascript" src="js/i18n.js"></script> 
+	<script type="text/javascript" src="js/action.js"></script> 
+	<script type="text/javascript">
+	jQuery(document).ready(function() {
+		$('#tabs').tab();
+	});
+	</script> 
+</body>
+</html>
