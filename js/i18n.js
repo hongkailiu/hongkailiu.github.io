@@ -40,7 +40,7 @@ function initUi(lang) {
     $("#s_bj").text(jQuery.i18n.prop('s_bj'));
     $("#s_dd").text(jQuery.i18n.prop('s_dd'));
     $("#s_as").text(jQuery.i18n.prop('s_as'));
-    $("#d_jp").text(jQuery.i18n.prop('d_jp'));
+    $("#d_jt").text(jQuery.i18n.prop('d_jt'));
     $("#a_resume").text(jQuery.i18n.prop('a_resume'));
     $("#a_pub").text(jQuery.i18n.prop('a_pub'));
     $("#h2_w_t_f_m").text(jQuery.i18n.prop('h2_w_t_f_m'));
