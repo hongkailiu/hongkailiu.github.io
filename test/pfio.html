@@ -1,1 +1,163 @@
-<h1>Test<h1>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>pbench-fio-tool</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+</head>
+<body>
+<div class="container">
+	<h1>pbench-fio-tool</h1>
+	
+	<div>
+		<div class="form-group">
+			<label for="result-1">Result 1: eg, content of <a href="http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-11-69/fio_RAND_IO_2017.10.16T19.57.05/result.json">file1</a></label>
+		    <textarea class="form-control" id="result-1-ta" rows="3"></textarea>
+		</div>
+		<div class="form-group">		
+		    <label for="result-2">Result 2: eg, content of <a href="http://pbench.perf.lab.eng.bos.redhat.com/results/EC2::ip-172-31-11-189/fio_RAND_IO_2017.11.22T20.41.56/result.json">file2</a></label>
+		    <textarea class="form-control" id="result-2-ta" rows="3"></textarea>
+		</div>
+		<div class="form-group">		
+		    <label for="type-slt">Select type:</label>
+		    <select class="form-control" id="type-slt">
+		        <option>throughput</option>
+		        <option>clat</option>
+		        <option>lat</option>
+		        <option>slat</option>
+		    </select>
+		</div>
+		<div>
+			<button type="button" class="btn" id="compare-btn">Compare</button>
+		</div>
+	</div>
+
+	<canvas id="myChart" width="400" height="400"></canvas>
+</div>
+<script>
+const colors = {
+  green: {
+    fill: '#e0eadf',
+    stroke: '#5eb84d',
+  },
+  lightBlue: {
+    stroke: '#6fccdd',
+  },
+  darkBlue: {
+    fill: '#92bed2',
+    stroke: '#3282bf',
+  },
+  purple: {
+    fill: '#8fa8c8',
+    stroke: '#75539e',
+  },
+};
+
+$(document).ready(function(){
+	var myLabels = new Array();
+	var myData1 = new Array();
+	var myData2 = new Array();
+
+	var ctx = document.getElementById("myChart").getContext('2d');
+	var myChart = new Chart(ctx, {
+	    type: 'line',
+	    data: {
+	        labels: myLabels,
+	        datasets: [
+	        {
+	            label: 'result-1',
+	            fill: false,
+	            borderColor: colors.darkBlue.stroke,
+	            data: myData1
+	        },
+	        {
+	           label: 'result-2',
+	            fill: false,
+	            data: myData2
+	        }
+	        ]
+	    },
+	    options: {
+            responsive: true,
+            hoverMode: 'index',
+            stacked: false,
+            elements: {
+    			line: {
+        			tension: 0
+    			}
+			},
+            title:{
+                display: true,
+                text:'Chart.js Line Chart - Multi Axis'
+            }
+        }
+	});
+
+    $("#compare-btn").click(function(){
+    	var type = $('#type-slt').val();
+        console.log("Node count: aaa", type);
+        var json1Str = $('#result-1-ta').val();
+        console.log("Node count: aaa", json1Str);
+        var json1obj = $.parseJSON(json1Str);
+        console.log("Node count: vvv", json1obj.length);
+
+        var json2Str = $('#result-2-ta').val();
+        var json2obj = $.parseJSON(json2Str);
+
+        myLabels.length = 0;
+        myData1.length = 0;
+        myData2.length = 0;
+        
+        $.each(json1obj, function( index, value ) {
+  			console.log( index + ": " + value.iteration_name );
+  			myLabels.push(value.iteration_name);
+		});
+
+		
+		$.each(json1obj, function( index, value ) {
+  			console.log( index + ": " + (value.iteration_data.throughput.iops_sec[0]).mean );
+  			switch(type) {
+			    case "clat":
+			        myData1.push((value.iteration_data.latency.clat[0]).mean);
+			        break;
+			    case "lat":
+			        myData1.push((value.iteration_data.latency.lat[0]).mean);
+			        break;
+			    case "slat":
+			        myData1.push((value.iteration_dat.latency.slat[0]).mean);
+			        break;
+			    default:
+			        myData1.push((value.iteration_data.throughput.iops_sec[0]).mean);
+			}
+		});
+
+		
+		$.each(json2obj, function( index, value ) {
+  			console.log( index + ": " + (value.iteration_data.throughput.iops_sec[0]).mean );
+  			switch(type) {
+			    case "clat":
+			        myData2.push((value.iteration_data.latency.clat[0]).mean);
+			        break;
+			    case "lat":
+			        myData2.push((value.iteration_data.latency.lat[0]).mean);
+			        break;
+			    case "slat":
+			        myData2.push((value.iteration_data.latency.slat[0]).mean);
+			        break;
+			    default:
+			        myData2.push((value.iteration_data.throughput.iops_sec[0]).mean);
+			}
+  			
+		});
+
+        
+        myChart.update();
+		
+	})
+});
+</script>
+</body>
+</html>
