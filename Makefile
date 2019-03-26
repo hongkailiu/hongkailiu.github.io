@@ -12,6 +12,7 @@ ifeq ($(expected_version),$(prod_version))
 	echo "versions match!"
 else
 	echo "versions do NOT match: manual push?"
+	git log --oneline $(prod_version)..HEAD
 	false
 endif
 
