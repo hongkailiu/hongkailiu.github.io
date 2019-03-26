@@ -2,6 +2,7 @@
 check-prod:
 	curl -s -o /dev/null -w "%{http_code}" www.hliu.ca | grep 200
 	curl -s www.hliu.ca/version.json | jq -r .version
+	git log --oneline -2
 
 .PHONY : generate-version
 generate-version:
