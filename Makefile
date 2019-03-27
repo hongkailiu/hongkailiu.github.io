@@ -16,10 +16,10 @@ else
 	false
 endif
 
-github_page_version := $(shell git describe --tags --always --dirty)
-github_page_build_time := $(shell date --iso-8601=seconds)
+github_pages_version := $(shell git describe --tags --always --dirty)
+github_pages_build_time := $(shell date --iso-8601=seconds)
 
 .PHONY : generate-version
 generate-version:
-	echo "{\"githubPageVersion\": \"$(github_page_version)\", \"githubPageBuildTime\": \"$(github_page_build_time)\"}" > version.json
+	echo "{\"githubPagesVersion\": \"$(github_pages_version)\", \"githubPagesBuildTime\": \"$(github_pages_build_time)\"}" > version.json
 	cat version.json
